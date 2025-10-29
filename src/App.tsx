@@ -19,7 +19,7 @@ const DATE_INFO = {
   date: "2 ноября 2025",
   time: "16:00",
   place: "кафе «Paragraph»",
-  address: "Михайловский сквер",
+  address: "улица Карла Маркса, 9",
 };
 
 const range = (n: number) => Array.from({ length: n }, (_, i) => i);
