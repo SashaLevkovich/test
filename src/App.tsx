@@ -16,15 +16,26 @@ const NO_TEXTS = [
 ];
 
 const DATE_INFO = {
-  date: "31 октября 2025",
-  time: "19:00",
-  place: "кафе «Марсель»",
-  address: "ул. Пушкина, 10",
+  date: "2 ноября 2025",
+  time: "16:00",
+  place: "кафе «Paragraph»",
+  address: "Михайловский сквер",
+};
+
+const range = (n: number) => Array.from({ length: n }, (_, i) => i);
+const shuffle = <T,>(arr: T[]) => {
+  const a = arr.slice();
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]];
+  }
+  return a;
 };
 
 export default function App() {
   const [screen, setScreen] = useState<Screen>("loading");
   const [noIndex, setNoIndex] = useState(0);
+  const [_noQueue, setNoQueue] = useState<number[]>([]);
   const [noFloating, setNoFloating] = useState(false);
   const [noPos, setNoPos] = useState<{ left: number; top: number } | null>(
     null,
@@ -53,6 +64,10 @@ export default function App() {
   };
 
   useEffect(() => {
+    setNoQueue(shuffle(range(NO_TEXTS.length).slice(1)));
+  }, []);
+
+  useEffect(() => {
     const t = setTimeout(() => setScreen("ask"), 6000);
     return () => clearTimeout(t);
   }, []);
@@ -78,7 +93,16 @@ export default function App() {
     } else {
       moveNo();
     }
-    setNoIndex(i => (i + 1) % NO_TEXTS.length);
+
+    setNoQueue(prevQ => {
+      const current = noIndex;
+      const pool = prevQ.length
+        ? prevQ
+        : shuffle(range(NO_TEXTS.length).filter(i => i !== current));
+      const [next, ...rest] = pool;
+      setNoIndex(next);
+      return rest;
+    });
   };
 
   useEffect(() => {
