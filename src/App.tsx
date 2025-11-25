@@ -16,10 +16,10 @@ const NO_TEXTS = [
 ];
 
 const DATE_INFO = {
-  date: "2 ноября 2025",
-  time: "16:00",
-  place: "кафе «Paragraph»",
-  address: "улица Карла Маркса, 9",
+  date: "28 ноября 2025",
+  time: "20:00",
+  place: "БАР «ЛУИ ПРИМА»",
+  address: "Проспект Машерова 15/1, Minsk, Belarus 220029",
 };
 
 const range = (n: number) => Array.from({ length: n }, (_, i) => i);
@@ -195,7 +195,7 @@ export default function App() {
             aria-label="Приглашение">
             <h1 className="title">Пойдём на свидание? 💫</h1>
             <p className="subtitle">
-              Обещаю кофе, смех и немного магии вечера.
+              Обещаю романтику, смех и немного магии вечера.
             </p>
 
             <div className="actions" ref={actionsRef}>
