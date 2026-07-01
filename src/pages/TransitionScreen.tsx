@@ -7,8 +7,9 @@ export function TransitionScreen({ onNext }: Props) {
     <div className="card" role="dialog" aria-live="polite">
       <h2 className="title">Ура! 🎉</h2>
       <p className="subtitle">
-        Я очень рад! А теперь давай сделаем этот вечер идеальным. Ответь на пару
-        вопросов, чтобы я всё организовал.
+        Очень рад! <br /> Чтобы вечер прошел четенько, ответь на пару вопросов.
+        Обещаю, в анкете не будет вопросов про мои «лучшие качества» или знание
+        квантовой физики))))
       </p>
 
       <div className="actions" style={{ minHeight: "auto", marginTop: "24px" }}>
@@ -16,7 +17,7 @@ export function TransitionScreen({ onNext }: Props) {
           className="btn btn-yes"
           onClick={onNext}
           style={{ width: "100%" }}>
-          Давай! ✨
+          Сгораю от нетерпения! ✨
         </button>
       </div>
     </div>

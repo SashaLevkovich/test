@@ -64,9 +64,6 @@ export function DetailsScreen({ category, onNext, onBack }: Props) {
 
   return (
     <div className="card" role="dialog" aria-live="polite">
-      <button className="btn-back" onClick={onBack} aria-label="Назад">
-        ← Назад
-      </button>
       <h2 className="title">{title}</h2>
       <p className="subtitle">{subtitle}</p>
 
@@ -89,6 +86,9 @@ export function DetailsScreen({ category, onNext, onBack }: Props) {
         onClick={() => onNext("Доверяю твоему вкусу ✨")}
         style={{ marginTop: "24px" }}>
         ✨ Доверяю твоему вкусу, выбери сам
+      </button>
+      <button className="btn-back" onClick={onBack} aria-label="Назад">
+        ← Назад
       </button>
     </div>
   );

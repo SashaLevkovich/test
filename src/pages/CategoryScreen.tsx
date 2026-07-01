@@ -8,9 +8,6 @@ interface Props {
 export function CategoryScreen({ onNext, onBack }: Props) {
   return (
     <div className="card" role="dialog" aria-live="polite">
-      <button className="btn-back" onClick={onBack} aria-label="Назад">
-        ← Назад
-      </button>
       <h2 className="title">Чего бы тебе хотелось? 🎨</h2>
       <p className="subtitle">Выбери настроение нашего вечера</p>
 
@@ -59,6 +56,9 @@ export function CategoryScreen({ onNext, onBack }: Props) {
         onClick={() => onNext("surprise")}
         style={{ marginTop: "24px" }}>
         ✨ Сделай мне сюрприз
+      </button>
+      <button className="btn-back" onClick={onBack} aria-label="Назад">
+        ← Назад
       </button>
     </div>
   );

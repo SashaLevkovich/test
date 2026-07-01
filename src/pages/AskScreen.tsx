@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import { trackEvent } from "../lib/track";
 
 const NO_TEXTS = [
   "нет",
@@ -9,6 +10,8 @@ const NO_TEXTS = [
   "а если кино?",
   "последний шанс!",
   "ммм… всё-таки нет?",
+  "ты хорошо подумала???",
+  "подумай о нашем будущем",
   "Последний шанс 😅",
 ];
 
@@ -33,6 +36,7 @@ export function AskScreen({ onYes }: Props) {
   const [noPos, setNoPos] = useState<{ left: number; top: number } | null>(
     null,
   );
+  const [scale, setScale] = useState(1);
 
   const [clickCount, setClickCount] = useState(0);
 
@@ -83,17 +87,40 @@ export function AskScreen({ onYes }: Props) {
   }, [noFloating, noPos]);
 
   const moveNo = () => {
+    const wrap = actionsRef.current;
+    const btn = noBtnRef.current;
+    if (!wrap || !btn) return;
+
     const b = getBounds();
     if (!b) return;
-    const left = PADDING + Math.random() * (b.maxLeft - PADDING);
-    const top = PADDING + Math.random() * (b.maxTop - PADDING);
-    setNoPos({ left, top });
+
+    const newScale = Math.max(0.5, 1 - clickCount * 0.1);
+    setScale(newScale);
+
+    let newLeft, newTop;
+    let isOverlapping = true;
+
+    while (isOverlapping) {
+      newLeft = PADDING + Math.random() * (b.maxLeft - PADDING);
+      newTop = PADDING + Math.random() * (b.maxTop - PADDING);
+
+      if (newLeft < 150 && newTop > 50) {
+        continue;
+      }
+      isOverlapping = false;
+    }
+
+    setNoPos({ left: newLeft!, top: newTop! });
   };
 
   const handleNo = () => {
+    trackEvent("click_no", { label: NO_TEXTS[noIndex] });
+
     setClickCount(prev => prev + 1);
 
-    if (clickCount >= 6) {
+    if (!noFloating) setNoFloating(true);
+
+    if (clickCount >= NO_TEXTS.length) {
       alert("Я не принимаю отказов 😅 Жми 'Да'!");
       return;
     }
@@ -123,7 +150,7 @@ export function AskScreen({ onYes }: Props) {
       aria-modal="true"
       aria-label="Приглашение">
       <h1 className="title">Пойдём на свидание? 💫</h1>
-      <p className="subtitle">Обещаю романтику, смех и немного магии вечера.</p>
+      <p className="subtitle">Обещаю романтику, смех и немного магии вечера</p>
 
       <div className="actions" ref={actionsRef}>
         <button type="button" className="btn btn-yes" onClick={onYes}>
@@ -141,10 +168,11 @@ export function AskScreen({ onYes }: Props) {
                   position: "absolute",
                   left: noPos.left,
                   top: noPos.top,
+                  transform: `scale(${scale})`,
                 }
               : undefined
           }>
-          {clickCount >= 6 ? "Сдаюсь 🏳️" : NO_TEXTS[noIndex]}
+          {clickCount >= NO_TEXTS.length ? "Сдаюсь 🏳️" : NO_TEXTS[noIndex]}
         </button>
       </div>
     </div>
