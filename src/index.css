@@ -17,16 +17,22 @@ body,
 
 body {
   margin: 0;
-  font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto,
-    "Helvetica Neue", Arial;
+  font-family:
+    ui-sans-serif,
+    system-ui,
+    -apple-system,
+    "Segoe UI",
+    Roboto,
+    "Helvetica Neue",
+    Arial;
   color: var(--text);
-  background: radial-gradient(1200px 800px at 20% 10%, #ffeaf3 0%, #fff 60%),
+  background:
+    radial-gradient(1200px 800px at 20% 10%, #ffeaf3 0%, #fff 60%),
     radial-gradient(1000px 700px at 90% 90%, #fff0f6 0%, #fff 55%),
     linear-gradient(180deg, #fff, #fff);
   overflow-x: hidden;
 }
 
-/* 🌸 Фоновые элементы — сердечки и крыски */
 .hearts {
   position: fixed;
   inset: 0;
@@ -35,7 +41,6 @@ body {
   z-index: 0;
 }
 
-/* Сердечки */
 .heart {
   position: absolute;
   color: #ff7aa2;
@@ -45,7 +50,6 @@ body {
   filter: blur(0.3px);
 }
 
-/* Крыски (маленькие контуры мышек) */
 .rat {
   position: absolute;
   opacity: 0.12;
@@ -79,7 +83,6 @@ body {
   }
 }
 
-/* Центрирование контента */
 .container {
   position: relative;
   z-index: 1;
@@ -89,7 +92,6 @@ body {
   padding: 24px;
 }
 
-/* Карточка вопроса/ответа */
 .card {
   width: min(720px, 92vw);
   background: rgba(255, 255, 255, 0.78);
@@ -101,7 +103,6 @@ body {
   text-align: center;
 }
 
-/* Заголовок */
 .title {
   margin: 0 0 16px;
   font-size: clamp(22px, 3.2vw, 34px);
@@ -109,7 +110,6 @@ body {
   text-align: center;
 }
 
-/* Подзаголовок */
 .subtitle {
   margin: 0 0 24px;
   font-size: clamp(16px, 2.2vw, 18px);
@@ -117,7 +117,6 @@ body {
   color: #666;
 }
 
-/* Кнопки */
 .actions {
   position: relative;
   display: flex;
@@ -144,8 +143,12 @@ body {
   font-size: 18px;
   font-weight: 600;
   line-height: 1;
-  transition: transform 0.12s ease, box-shadow 0.12s ease, background-color 0.2s,
-    left 0.25s ease, top 0.25s ease;
+  transition:
+    transform 0.12s ease,
+    box-shadow 0.12s ease,
+    background-color 0.2s,
+    left 0.25s ease,
+    top 0.25s ease;
 }
 
 .btn-yes {
@@ -166,19 +169,22 @@ body {
   border: 1px solid #ffd1e4;
   box-shadow: 0 6px 16px rgba(255, 122, 162, 0.18);
   position: static;
-  transition: left 0.25s ease, top 0.25s ease, transform 0.12s ease;
+  transition:
+    left 0.25s ease,
+    top 0.25s ease,
+    transform 0.12s ease;
 }
 .btn-no:active {
   transform: translateY(1px) scale(0.98);
 }
 
-/* Лоадер */
 .loader {
   position: fixed;
   inset: 0;
   display: grid;
   place-items: center;
-  background: radial-gradient(600px 400px at 20% 10%, #ffeaf3 0%, #fff 60%),
+  background:
+    radial-gradient(600px 400px at 20% 10%, #ffeaf3 0%, #fff 60%),
     radial-gradient(600px 400px at 90% 90%, #fff0f6 0%, #fff 55%), #fff;
   z-index: 100;
   transition: opacity 0.6s ease;
@@ -196,7 +202,6 @@ body {
   border: 1px solid #ffe1ee;
 }
 
-/* Финальный экран */
 .info {
   display: grid;
   gap: 12px;
@@ -212,7 +217,6 @@ body {
   color: #555;
 }
 
-/* 🌸 адаптив */
 @media (max-width: 420px) {
   .btn {
     height: 52px;
@@ -233,4 +237,273 @@ body {
     min-width: 140px;
     padding: 14px 24px;
   }
+}
+
+.choice-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 16px;
+  margin-top: 24px;
+}
+
+.choice-btn {
+  appearance: none;
+  background: rgba(255, 255, 255, 0.6);
+  border: 2px solid #ffe1ee;
+  border-radius: 16px;
+  padding: 24px 16px;
+  font-size: 18px;
+  font-weight: 500;
+  color: var(--text);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.choice-btn .emoji {
+  font-size: 32px;
+}
+
+.choice-btn:hover {
+  background: #fff;
+  border-color: var(--pink);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(255, 122, 162, 0.15);
+}
+
+.choice-btn:active {
+  transform: translateY(0);
+}
+
+.btn-outline {
+  background: transparent;
+  color: #888;
+  border: 1px dashed #ccc;
+  box-shadow: none;
+  margin-top: 16px;
+  width: 100%;
+}
+.btn-outline:hover {
+  color: var(--pink);
+  border-color: var(--pink);
+}
+
+.ticket {
+  position: relative;
+  background: #fff;
+  border-radius: 16px;
+  padding: 24px;
+  text-align: left;
+  border: 2px dashed var(--pink);
+  margin-top: 24px;
+}
+
+.ticket::before,
+.ticket::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  width: 20px;
+  height: 20px;
+  background: var(--bg1);
+  border-radius: 50%;
+  transform: translateY(-50%);
+}
+
+.ticket::before {
+  left: -12px;
+}
+.ticket::after {
+  right: -12px;
+}
+
+.ticket-row {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid #ffe1ee;
+  padding: 12px 0;
+}
+.ticket-row:last-child {
+  border-bottom: none;
+}
+
+.ticket-label {
+  color: #888;
+  font-size: 14px;
+}
+.ticket-value {
+  font-weight: 600;
+  color: var(--text);
+}
+
+.section-label {
+  text-align: left;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--text);
+  margin: 24px 0 12px;
+  padding-left: 4px;
+}
+
+.date-scroll {
+  display: flex;
+  gap: 12px;
+  overflow-x: auto;
+  padding: 4px;
+  margin: 0 -4px;
+  scroll-behavior: smooth;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.date-scroll::-webkit-scrollbar {
+  display: none;
+}
+
+.date-card {
+  flex: 0 0 auto;
+  width: 72px;
+  height: 88px;
+  border: 2px solid #ffe1ee;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.6);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.date-card .weekday {
+  font-size: 14px;
+  color: #888;
+  text-transform: capitalize;
+  margin-bottom: 4px;
+}
+
+.date-card .day {
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.time-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+  gap: 12px;
+}
+
+.time-chip {
+  appearance: none;
+  background: rgba(255, 255, 255, 0.6);
+  border: 2px solid #ffe1ee;
+  border-radius: 12px;
+  padding: 12px 0;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--text);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.date-card.selected,
+.time-chip.selected {
+  background: var(--pink);
+  border-color: var(--pink);
+  box-shadow: 0 6px 16px rgba(255, 122, 162, 0.25);
+  transform: translateY(-2px);
+}
+
+.date-card.selected .weekday,
+.date-card.selected .day,
+.time-chip.selected {
+  color: #fff;
+}
+.btn-back {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  background: transparent;
+  border: none;
+  color: #888;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 10px;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+  z-index: 10;
+}
+
+.btn-back:hover {
+  background: var(--bg1);
+  color: var(--pink);
+}
+/* --- Стили для финального билета --- */
+.ticket {
+  position: relative;
+  background: #fff;
+  border-radius: 16px;
+  padding: 24px;
+  text-align: left;
+  border: 2px dashed var(--pink);
+  margin-top: 24px;
+  width: 100%;
+}
+
+/* Декоративные вырезы по бокам билета */
+.ticket::before,
+.ticket::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  width: 20px;
+  height: 20px;
+  background: var(--bg1);
+  border-radius: 50%;
+  transform: translateY(-50%);
+}
+
+.ticket::before {
+  left: -12px;
+}
+.ticket::after {
+  right: -12px;
+}
+
+/* 🌟 Обновленная строка билета */
+.ticket-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start; /* Чтобы при переносе текста все выравнивалось по верху */
+  gap: 16px;
+  border-bottom: 1px solid #ffe1ee;
+  padding: 14px 0;
+}
+.ticket-row:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+.ticket-row:first-child {
+  padding-top: 0;
+}
+
+.ticket-label {
+  color: #888;
+  font-size: 14px;
+  flex-shrink: 0; /* Не даем лейблу сжиматься */
+  padding-top: 2px;
+}
+
+.ticket-value {
+  font-weight: 600;
+  color: var(--text);
+  text-align: right;
+  line-height: 1.4; /* Улучшаем читаемость при переносе строк */
 }
