@@ -54,7 +54,7 @@ export function SummaryScreen({ data, onReset }: Props) {
       <div className="actions" style={{ minHeight: "auto", marginTop: "32px" }}>
         <button
           className="btn btn-yes"
-          onClick={() => window.open("https://t.me/твой_юзернейм", "_blank")}
+          onClick={() => window.open("https://t.me/lhrec", "_blank")}
           style={{ width: "100%" }}>
           Написать мне
         </button>
