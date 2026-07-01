@@ -150,7 +150,10 @@ export function AskScreen({ onYes }: Props) {
       aria-modal="true"
       aria-label="Приглашение">
       <h1 className="title">Пойдём на свидание? 💫</h1>
-      <p className="subtitle">Обещаю романтику, смех и немного магии вечера</p>
+      <p className="subtitle">
+        Обещаю романтику, смех и немного магии вечера. С твоей улыбкой, уверен,
+        получится вдвойне волшебно
+      </p>
 
       <div className="actions" ref={actionsRef}>
         <button type="button" className="btn btn-yes" onClick={onYes}>
