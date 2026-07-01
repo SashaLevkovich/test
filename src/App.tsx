@@ -1,5 +1,7 @@
+import { useEffect } from "react";
 import { useInviteState } from "./hook/useInviteState";
 import { sendTelegramNotification } from "./lib/telegram";
+import { trackEvent } from "./lib/track";
 import { AskScreen } from "./pages/AskScreen";
 import { BackgroundElements } from "./pages/BackgroundElements";
 import { CategoryScreen } from "./pages/CategoryScreen";
@@ -10,6 +12,10 @@ import { TransitionScreen } from "./pages/TransitionScreen";
 
 export default function App() {
   const { state, updateState, resetState } = useInviteState();
+
+  useEffect(() => {
+    trackEvent("open");
+  }, []);
 
   const renderScreen = () => {
     switch (state.step) {
